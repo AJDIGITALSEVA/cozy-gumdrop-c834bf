@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJ Digital Seva Kendra - Most Popular Net Cafe in Koregaon</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#eef2ff',
+                            100: '#e0e7ff',
+                            500: '#6366f1',
+                            600: '#4f46e5',
+                            700: '#4338ca',
+                            900: '#312e81',
+                        },
+                        neon: {
+                            cyan: '#06b6d4',
+                            purple: '#8b5cf6',
+                            pink: '#ec4899'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .neon-glow {
+            box-shadow: 0 0 25px rgba(99, 102, 241, 0.4);
+        }
+        .neon-glow-cyan {
+            box-shadow: 0 0 20px rgba(6, 182, 212, 0.5);
+        }
+        .text-gradient {
+            background: linear-gradient(135deg, #6366f1 0%, #06b6d4 50%, #ec4899 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .hero-bg {
+            background: radial-gradient(circle at 50% 20%, rgba(79, 70, 229, 0.15) 0%, rgba(15, 23, 42, 1) 70%);
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .glass-card-light {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans antialiased selection:bg-brand-500 selection:text-white">
+
+    <!-- Notification Modal (Custom Alert replacement) -->
+    <div id="notification-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm hidden">
+        <div class="glass-card p-6 rounded-2xl max-w-sm w-full mx-4 text-center shadow-2xl border border-brand-500/30">
+            <div id="modal-icon" class="w-16 h-16 bg-brand-500/20 text-brand-400 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl">
+                <i class="fa-solid fa-check"></i>
+            </div>
+            <h3 id="modal-title" class="text-xl font-bold text-white mb-2">Success!</h3>
+            <p id="modal-message" class="text-slate-300 text-sm mb-6">Your request has been processed successfully.</p>
+            <button onclick="closeModal()" class="w-full py-3 bg-gradient-to-r from-brand-600 to-neon-cyan text-white font-semibold rounded-xl shadow-lg hover:opacity-95 transition">OK, Got It</button>
+        </div>
+    </div>
+
+    <!-- Top Notification Banner -->
+    <div class="bg-gradient-to-r from-brand-600 via-indigo-600 to-neon-cyan text-white text-xs sm:text-sm py-2 px-4 text-center font-medium flex items-center justify-center gap-2 shadow-inner">
+        <span class="bg-white/20 px-2 py-0.5 rounded-full text-xs font-bold uppercase tracking-wider animate-pulse">🔥 Koregaon's #1</span>
+        <span>Welcome to AJ DIGITAL SEVA KENDRA — Fast, Secure & Reliable Digital Services!</span>
+        <span class="hidden md:inline text-white/80">| Call: +91 80871 20198</span>
+    </div>
+
+    <!-- Navigation Bar -->
+    <nav class="sticky top-0 z-40 bg-slate-950/80 backdrop-blur-md border-b border-slate-800 transition-all">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Logo -->
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="w-12 h-12 rounded-xl bg-gradient-to-tr from-brand-600 to-neon-cyan flex items-center justify-center text-white font-black text-xl shadow-lg group-hover:scale-105 transition">
+                    AJ
+                </div>
+                <div>
+                    <span class="text-lg sm:text-xl font-black tracking-tight text-white block">AJ DIGITAL <span class="text-brand-400">SEVA KENDRA</span></span>
+                    <span class="text-xs text-slate-400 font-medium tracking-wide flex items-center gap-1">
+                        <i class="fa-solid fa-location-dot text-rose-500"></i> Front of D.P. Bhosale College, Koregaon
+                    </span>
+                </div>
+            </a>
+
+            <!-- Desktop Links -->
+            <div class="hidden lg:flex items-center gap-8 font-medium text-sm text-slate-300">
+                <a href="#services" class="hover:text-brand-400 transition">Services</a>
+                <a href="#about" class="hover:text-brand-400 transition">About Us</a>
+                <a href="#pricing" class="hover:text-brand-400 transition">Quick Pricing</a>
+                <a href="#testimonials" class="hover:text-brand-400 transition">Testimonials</a>
+                <a href="#contact" class="hover:text-brand-400 transition">Contact</a>
+            </div>
+
+            <!-- Action CTA Button -->
+            <div class="flex items-center gap-3">
+                <a href="#inquiry" class="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-semibold text-sm shadow-lg shadow-brand-500/25 transition">
+                    <i class="fa-solid fa-bolt"></i> Book Service
+                </a>
+                <!-- Mobile Menu Toggle -->
+                <button onclick="toggleMobileMenu()" class="lg:hidden p-2.5 text-slate-300 hover:text-white rounded-xl bg-slate-900 border border-slate-800">
+                    <i class="fa-solid fa-bars text-lg"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-slate-900 border-b border-slate-800 px-6 py-4 space-y-3">
+            <a href="#services" onclick="toggleMobileMenu()" class="block text-slate-300 hover:text-white py-2 font-medium">Services</a>
+            <a href="#about" onclick="toggleMobileMenu()" class="block text-slate-300 hover:text-white py-2 font-medium">About Us</a>
+            <a href="#pricing" onclick="toggleMobileMenu()" class="block text-slate-300 hover:text-white py-2 font-medium">Quick Pricing</a>
+            <a href="#testimonials" onclick="toggleMobileMenu()" class="block text-slate-300 hover:text-white py-2 font-medium">Testimonials</a>
+            <a href="#contact" onclick="toggleMobileMenu()" class="block text-slate-300 hover:text-white py-2 font-medium">Contact</a>
+            <a href="#inquiry" onclick="toggleMobileMenu()" class="block text-center py-3 bg-brand-600 text-white font-semibold rounded-xl mt-2">Book Service Online</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative hero-bg min-h-[90vh] flex items-center justify-center px-4 overflow-hidden pt-12 pb-20">
+        <!-- Background Glow Elements -->
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-brand-600/20 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute bottom-10 right-10 w-80 h-80 bg-neon-cyan/15 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="max-w-6xl mx-auto text-center relative z-10">
+            <!-- Badge -->
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card text-xs sm:text-sm font-semibold text-brand-300 mb-6 border border-brand-500/30">
+                <span class="flex h-2 w-2 rounded-full bg-emerald-400 animate-ping"></span>
+                <span>⭐ Rated #1 Net Cafe & Digital Service Hub in Koregaon</span>
+            </div>
+
+            <!-- Main Heading -->
+            <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white mb-6 leading-tight">
+                Your Trusted Portal for <br>
+                <span class="text-gradient">Digital & Gov Services</span>
+            </h1>
+
+            <p class="text-base sm:text-xl text-slate-300 max-w-3xl mx-auto mb-10 leading-relaxed">
+                From Udyam Aadhaar, Shop Act License, and FSSAI registrations to Pensioner Forms, Agricultural documentation, PF services, PAN, Voter ID, and Passport applications in Koregaon!
+            </p>
+
+            <!-- CTA Buttons -->
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
+                <a href="#services" class="w-full sm:w-auto px-8 py-4 rounded-2xl bg-gradient-to-r from-brand-600 to-indigo-600 hover:opacity-95 text-white font-bold text-base shadow-xl neon-glow transition flex items-center justify-center gap-3">
+                    <i class="fa-solid fa-layer-group text-lg"></i> Explore All Services
+                </a>
+                <a href="tel:8087120198" class="w-full sm:w-auto px-8 py-4 rounded-2xl glass-card hover:bg-white/10 text-white font-bold text-base transition flex items-center justify-center gap-3 border border-slate-700">
+                    <i class="fa-solid fa-phone text-neon-cyan"></i> Call Now: 80871 20198
+                </a>
+            </div>
+
+            <!-- Quick Stats Bar -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
+                <div class="glass-card p-5 rounded-2xl text-center">
+                    <div class="text-2xl sm:text-3xl font-black text-white mb-1">15K+</div>
+                    <div class="text-xs sm:text-sm text-slate-400 font-medium">Happy Customers</div>
+                </div>
+                <div class="glass-card p-5 rounded-2xl text-center">
+                    <div class="text-2xl sm:text-3xl font-black text-brand-400 mb-1">50+</div>
+                    <div class="text-xs sm:text-sm text-slate-400 font-medium">Digital Services</div>
+                </div>
+                <div class="glass-card p-5 rounded-2xl text-center">
+                    <div class="text-2xl sm:text-3xl font-black text-emerald-400 mb-1">100%</div>
+                    <div class="text-xs sm:text-sm text-slate-400 font-medium">Secure & Trusted</div>
+                </div>
+                <div class="glass-card p-5 rounded-2xl text-center">
+                    <div class="text-2xl sm:text-3xl font-black text-neon-cyan mb-1">10 Yrs</div>
+                    <div class="text-xs sm:text-sm text-slate-400 font-medium">Excellence in Koregaon</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 px-4 sm:px-6 lg:px-8 bg-slate-900/60 relative">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-xs sm:text-sm font-bold uppercase tracking-widest text-brand-400 mb-3">Our Comprehensive Offerings</h2>
+                <h3 class="text-3xl sm:text-5xl font-black text-white tracking-tight mb-4">Everything You Need, All in One Place</h3>
+                <p class="text-slate-400 text-sm sm:text-base">Experience lightning-fast service execution with zero hassle. Explore our core service verticals below.</p>
+            </div>
+
+            <!-- Services Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Service 1 -->
+                <div class="glass-card rounded-3xl p-6 hover:border-brand-500/50 transition-all duration-300 group hover:-translate-y-1">
+                    <div class="w-14 h-14 rounded-2xl bg-brand-600/20 text-brand-400 flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition">
+                        <i class="fa-solid fa-file-invoice-dollar"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-2">Pensioner Forms</h4>
+                    <p class="text-slate-400 text-sm mb-6 leading-relaxed">Assistance for digital life certificate submissions (Jeevan Pramaan), pension forms, and KYC verifications for retired citizens.</p>
+                    <a href="#inquiry" onclick="selectService('Pensioner Forms')" class="inline-flex items-center gap-2 text-brand-400 font-semibold text-sm hover:text-brand-300">
+                        Enquire Now <i class="fa-solid fa-arrow-right text-xs"></i>
+                    </a>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="glass-card rounded-3xl p-6 hover:border-neon-cyan/50 transition-all duration-300 group hover:-translate-y-1">
+                    <div class="w-14 h-14 rounded-2xl bg-neon-cyan/20 text-neon-cyan flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition">
+                        <i class="fa-solid fa-tractor"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-2">Agricultural Forms</h4>
+                    <p class="text-slate-400 text-sm mb-6 leading-relaxed">Mahadbt farmer schemes, solar water pump applications, crop insurance, and agricultural subsidy form submissions.</p>
+                    <a href="#inquiry" onclick="selectService('Agricultural Forms')" class="inline-flex items-center gap-2 text-neon-cyan font-semibold text-sm hover:text-cyan-300">
+                        Enquire Now <i class="fa-solid fa-arrow-right text-xs"></i>
+                    </a>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="glass-card rounded-3xl p-6 hover:border-emerald-500/50 transition-all duration-300 group hover:-translate-y-1">
+                    <div class="w-14 h-14 rounded-2xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition">
+                        <i class="fa-solid fa-piggy-bank"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-2">PF Services</h4>
+                    <p class="text-slate-400 text-sm mb-6 leading-relaxed">Provident Fund (PF) UAN activations, KYC updates, online withdrawal claims, and passbook downloads.</p>
+                    <a href="#inquiry" onclick="selectService('PF Services')" class="inline-flex items-center gap-2 text-emerald-400 font-semibold text-sm hover:text-emerald-300">
+                        Enquire Now <i class="fa-solid fa-arrow-right text-xs"></i>
+                    </a>
+                </div>
+
+                <!-- Service 4 -->
+                <div class="glass-card rounded-3xl p-6 hover:border-amber-500/50 transition-all duration-300 group hover:-translate-y-1">
+                    <div class="w-14 h-14 rounded-2xl bg-amber-500/20 text-amber-400 flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition">
+                        <i class="fa-solid fa-store"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-2">Shop Act License</h4>
+                    <p class="text-slate-400 text-sm mb-6 leading-relaxed">New Gumasta / Shop Act license registrations and renewals for commercial establishments and local shops.</p>
+                    <a href="#inquiry" onclick="selectService('Shop Act License')" class="inline-flex items-center gap-2 text-amber-400 font-semibold text-sm hover:text-amber-300">
+                        Enquire Now <i class="fa-solid fa-arrow-right text-xs"></i>
+                    </a>
+                </div>
+
+                <!-- Service 5 -->
+                <div class="glass-card rounded-3xl p-6 hover:border-purple-500/50 transition-all duration-300 group hover:-translate-y-1">
+                    <div class="w-14 h-14 rounded-2xl bg-purple-500/20 text-purple-400 flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition">
+                        <i class="fa-solid fa-industry"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-2">Udyam Aadhaar</h4>
+                    <p class="text-slate-400 text-sm mb-6 leading-relaxed">MSME / Udyam registration certificate processing for small and medium enterprises with instant PDF delivery.</p>
+                    <a href="#inquiry" onclick="selectService('Udyam Aadhaar')" class="inline-flex items-center gap-2 text-purple-400 font-semibold text-sm hover:text-purple-300">
+                        Enquire Now <i class="fa-solid fa-arrow-right text-xs"></i>
+                    </a>
+                </div>
+
+                <!-- Service 6 -->
+                <div class="glass-card rounded-3xl p-6 hover:border-rose-500/50 transition-all duration-300 group hover:-translate-y-1">
+                    <div class="w-14 h-14 rounded-2xl bg-rose-500/20 text-rose-400 flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition">
+                        <i class="fa-solid fa-utensils"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-2">FSSAI Registration</h4>
+                    <p class="text-slate-400 text-sm mb-6 leading-relaxed">Food license applications and renewals for restaurants, food stalls, manufacturers, and grocery stores.</p>
+                    <a href="#inquiry" onclick="selectService('FSSAI Registration')" class="inline-flex items-center gap-2 text-rose-400 font-semibold text-sm hover:text-rose-300">
+                        Enquire Now <i class="fa-solid fa-arrow-right text-xs"></i>
+                    </a>
+                </div>
+
+                <!-- Service 7 -->
+                <div class="glass-card rounded-3xl p-6 hover:border-blue-500/50 transition-all duration-300 group hover:-translate-y-1">
+                    <div class="w-14 h-14 rounded-2xl bg-blue-500/20 text-blue-400 flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition">
+                        <i class="fa-solid fa-id-card"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-2">PAN Card & Voter ID</h4>
+                    <p class="text-slate-400 text-sm mb-6 leading-relaxed">New PAN applications, corrections, Voter ID card registration, corrections, and duplicate card prints.</p>
+                    <a href="#inquiry" onclick="selectService('PAN Card & Voter ID')" class="inline-flex items-center gap-2 text-blue-400 font-semibold text-sm hover:text-blue-300">
+                        Enquire Now <i class="fa-solid fa-arrow-right text-xs"></i>
+                    </a>
+                </div>
+
+                <!-- Service 8 -->
+                <div class="glass-card rounded-3xl p-6 hover:border-pink-500/50 transition-all duration-300 group hover:-translate-y-1">
+                    <div class="w-14 h-14 rounded-2xl bg-pink-500/20 text-pink-400 flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition">
+                        <i class="fa-solid fa-id-badge"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-2">Passport & Driving License</h4>
+                    <p class="text-slate-400 text-sm mb-6 leading-relaxed">New passport applications, slot bookings, learning license applications, and driving license renewals.</p>
+                    <a href="#inquiry" onclick="selectService('Passport & Driving License')" class="inline-flex items-center gap-2 text-pink-400 font-semibold text-sm hover:text-pink-300">
+                        Enquire Now <i class="fa-solid fa-arrow-right text-xs"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us & About Section -->
+    <section id="about" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div>
+                <span class="text-xs sm:text-sm font-bold uppercase tracking-widest text-brand-400 mb-3 block">About AJ Digital Seva Kendra</span>
+                <h3 class="text-3xl sm:text-5xl font-black text-white tracking-tight mb-6">Koregaon’s Most Popular & Trusted Cyber Cafe</h3>
+                <p class="text-slate-300 text-base mb-6 leading-relaxed">
+                    Conveniently located <strong>Front of D.P. Bhosale College, Koregaon</strong>, <strong>AJ Digital Seva Kendra</strong> has become synonymous with trust, speed, and accuracy. Whether you need urgent Udyam Aadhaar, Shop Act License, or agricultural forms submitted, our expert staff ensures every task is executed smoothly.
+                </p>
+                <div class="space-y-4 mb-8">
+                    <div class="flex items-start gap-4">
+                        <div class="w-8 h-8 rounded-full bg-brand-600/20 text-brand-400 flex items-center justify-center shrink-0 mt-1">
+                            <i class="fa-solid fa-check"></i>
+                        </div>
+                        <div>
+                            <h5 class="text-white font-bold mb-1">Prime Location</h5>
+                            <p class="text-slate-400 text-sm">Right in front of D.P. Bhosale College, easily accessible for all students and locals.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="w-8 h-8 rounded-full bg-brand-600/20 text-brand-400 flex items-center justify-center shrink-0 mt-1">
+                            <i class="fa-solid fa-check"></i>
+                        </div>
+                        <div>
+                            <h5 class="text-white font-bold mb-1">Experienced & Friendly Assistance</h5>
+                            <p class="text-slate-400 text-sm">Professional operators to guide you step-by-step through complex government portals.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="w-8 h-8 rounded-full bg-brand-600/20 text-brand-400 flex items-center justify-center shrink-0 mt-1">
+                            <i class="fa-solid fa-check"></i>
+                        </div>
+                        <div>
+                            <h5 class="text-white font-bold mb-1">Affordable & Transparent Pricing</h5>
+                            <p class="text-slate-400 text-sm">No hidden charges. Clear, budget-friendly rates for all licenses, registrations, and digital services.</p>
+                        </div>
+                    </div>
+                </div>
+                <a href="#contact" class="inline-flex items-center gap-3 px-6 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-semibold border border-slate-700 transition">
+                    <i class="fa-solid fa-location-dot text-rose-500"></i> Visit Our Koregaon Center
+                </a>
+            </div>
+
+            <!-- Visual Graphic Card -->
+            <div class="relative">
+                <div class="absolute -inset-1 rounded-3xl bg-gradient-to-r from-brand-600 to-neon-cyan opacity-30 blur-xl"></div>
+                <div class="relative glass-card rounded-3xl p-8 border border-slate-800">
+                    <div class="flex items-center justify-between mb-8 pb-6 border-b border-slate-800">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-xl bg-brand-600 flex items-center justify-center text-white font-bold">
+                                <i class="fa-solid fa-shield-halved"></i>
+                            </div>
+                            <div>
+                                <h5 class="text-white font-bold text-sm">Official Digital Partner</h5>
+                                <p class="text-slate-400 text-xs">Koregaon, Maharashtra</p>
+                            </div>
+                        </div>
+                        <span class="px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 text-xs font-bold border border-emerald-500/20">Open Today</span>
+                    </div>
+
+                    <div class="space-y-4 mb-8">
+                        <div class="bg-slate-900/80 p-4 rounded-2xl flex items-center justify-between border border-slate-800">
+                            <div class="flex items-center gap-3">
+                                <i class="fa-regular fa-clock text-brand-400 text-xl"></i>
+                                <div>
+                                    <h6 class="text-white text-sm font-semibold">Working Hours</h6>
+                                    <p class="text-slate-400 text-xs">Mon - Sat: 8:00 AM - 9:30 PM</p>
+                                </div>
+                            </div>
+                            <span class="text-xs text-emerald-400 font-bold">Open Now</span>
+                        </div>
+                        <div class="bg-slate-900/80 p-4 rounded-2xl flex items-center justify-between border border-slate-800">
+                            <div class="flex items-center gap-3">
+                                <i class="fa-solid fa-headset text-neon-cyan text-xl"></i>
+                                <div>
+                                    <h6 class="text-white text-sm font-semibold">Direct Helpline</h6>
+                                    <p class="text-slate-400 text-xs">Call: 80871 20198</p>
+                                </div>
+                            </div>
+                            <a href="tel:8087120198" class="text-xs text-brand-400 font-bold hover:underline">Call</a>
+                        </div>
+                    </div>
+
+                    <div class="p-4 rounded-2xl bg-gradient-to-br from-brand-900/40 to-slate-900 border border-brand-500/20 text-center">
+                        <p class="text-xs text-slate-300 font-medium">📍 Address: Front of D.P. Bhosale College, Koregaon, Satara District, MH - 415501</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Pricing / Rates Table -->
+    <section id="pricing" class="py-20 px-4 sm:px-6 lg:px-8 bg-slate-900/40">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <h2 class="text-xs sm:text-sm font-bold uppercase tracking-widest text-brand-400 mb-3">Transparent Charges</h2>
+                <h3 class="text-3xl sm:text-5xl font-black text-white tracking-tight mb-4">Quick Service Rates</h3>
+                <p class="text-slate-400 text-sm sm:text-base">Affordable and transparent pricing for all licenses, registrations, and everyday digital needs in Koregaon.</p>
+            </div>
+
+            <div class="glass-card rounded-3xl overflow-hidden border border-slate-800 shadow-2xl">
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="bg-slate-900/90 text-slate-300 text-xs sm:text-sm uppercase tracking-wider border-b border-slate-800">
+                                <th class="p-4 sm:p-6 font-bold">Service Category</th>
+                                <th class="p-4 sm:p-6 font-bold">Description / Details</th>
+                                <th class="p-4 sm:p-6 font-bold">Estimated Rate (₹)</th>
+                                <th class="p-4 sm:p-6 font-bold text-right">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-800 text-sm text-slate-300">
+                            <tr class="hover:bg-slate-800/40 transition">
+                                <td class="p-4 sm:p-6 font-semibold text-white flex items-center gap-2">
+                                    <i class="fa-solid fa-store text-amber-400"></i> Shop Act License (Gumasta)
+                                </td>
+                                <td class="p-4 sm:p-6 text-slate-400">New registration / Renewal</td>
+                                <td class="p-4 sm:p-6 font-bold text-brand-300">Affordable Fees</td>
+                                <td class="p-4 sm:p-6 text-right">
+                                    <a href="#inquiry" onclick="selectService('Shop Act License')" class="px-3 py-1.5 rounded-lg bg-brand-600/20 hover:bg-brand-600 hover:text-white text-brand-400 text-xs font-semibold transition">Enquire</a>
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-slate-800/40 transition">
+                                <td class="p-4 sm:p-6 font-semibold text-white flex items-center gap-2">
+                                    <i class="fa-solid fa-industry text-purple-400"></i> Udyam Aadhaar
+                                </td>
+                                <td class="p-4 sm:p-6 text-slate-400">MSME Certificate with instant print</td>
+                                <td class="p-4 sm:p-6 font-bold text-brand-300">Quick Processing</td>
+                                <td class="p-4 sm:p-6 text-right">
+                                    <a href="#inquiry" onclick="selectService('Udyam Aadhaar')" class="px-3 py-1.5 rounded-lg bg-brand-600/20 hover:bg-brand-600 hover:text-white text-brand-400 text-xs font-semibold transition">Enquire</a>
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-slate-800/40 transition">
+                                <td class="p-4 sm:p-6 font-semibold text-white flex items-center gap-2">
+                                    <i class="fa-solid fa-utensils text-rose-400"></i> FSSAI Registration
+                                </td>
+                                <td class="p-4 sm:p-6 text-slate-400">Food license for restaurants & shops</td>
+                                <td class="p-4 sm:p-6 font-bold text-brand-300">Nominal Charges</td>
+                                <td class="p-4 sm:p-6 text-right">
+                                    <a href="#inquiry" onclick="selectService('FSSAI Registration')" class="px-3 py-1.5 rounded-lg bg-brand-600/20 hover:bg-brand-600 hover:text-white text-brand-400 text-xs font-semibold transition">Enquire</a>
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-slate-800/40 transition">
+                                <td class="p-4 sm:p-6 font-semibold text-white flex items-center gap-2">
+                                    <i class="fa-solid fa-file-invoice-dollar text-brand-400"></i> Pensioner & PF Services
+                                </td>
+                                <td class="p-4 sm:p-6 text-slate-400">Life certificates, UAN & PF withdrawals</td>
+                                <td class="p-4 sm:p-6 font-bold text-brand-300">Nominal Charges</td>
+                                <td class="p-4 sm:p-6 text-right">
+                                    <a href="#inquiry" onclick="selectService('Pensioner Forms')" class="px-3 py-1.5 rounded-lg bg-brand-600/20 hover:bg-brand-600 hover:text-white text-brand-400 text-xs font-semibold transition">Enquire</a>
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-slate-800/40 transition">
+                                <td class="p-4 sm:p-6 font-semibold text-white flex items-center gap-2">
+                                    <i class="fa-solid fa-tractor text-neon-cyan"></i> Agricultural & Farmer Forms
+                                </td>
+                                <td class="p-4 sm:p-6 text-slate-400">Mahadbt, subsidies & solar pumps</td>
+                                <td class="p-4 sm:p-6 font-bold text-brand-300">Nominal Charges</td>
+                                <td class="p-4 sm:p-6 text-right">
+                                    <a href="#inquiry" onclick="selectService('Agricultural Forms')" class="px-3 py-1.5 rounded-lg bg-brand-600/20 hover:bg-brand-600 hover:text-white text-brand-400 text-xs font-semibold transition">Enquire</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="p-4 bg-slate-900/80 text-center text-xs text-slate-400 border-t border-slate-800">
+                    * Prices may vary slightly depending on official government fee revisions and document complexity.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="text-center max-w-2xl mx-auto mb-16">
+            <h2 class="text-xs sm:text-sm font-bold uppercase tracking-widest text-brand-400 mb-3">Customer Reviews</h2>
+            <h3 class="text-3xl sm:text-5xl font-black text-white tracking-tight mb-4">Loved by Koregaon Locals</h3>
+            <p class="text-slate-400 text-sm sm:text-base">See what our regular students, college staff, and business owners have to say about AJ Digital Seva Kendra.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Review 1 -->
+            <div class="glass-card rounded-3xl p-8 flex flex-col justify-between border border-slate-800 relative">
+                <div class="absolute top-6 right-6 text-brand-500/20 text-4xl">
+                    <i class="fa-solid fa-quote-right"></i>
+                </div>
+                <div>
+                    <div class="flex items-center gap-1 text-amber-400 text-sm mb-4">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-slate-300 text-sm sm:text-base leading-relaxed mb-6">
+                        "Located right in front of D.P. Bhosale College, this is the most convenient and fastest net cafe in Koregaon. Got my Shop Act license done in no time!"
+                    </p>
+                </div>
+                <div class="flex items-center gap-4 pt-4 border-t border-slate-800">
+                    <div class="w-12 h-12 rounded-full bg-gradient-to-tr from-brand-600 to-neon-cyan flex items-center justify-center text-white font-bold text-sm">
+                        SK
+                    </div>
+                    <div>
+                        <h5 class="text-white font-bold text-sm">Swapnil Kadam</h5>
+                        <p class="text-slate-400 text-xs">Local Shop Owner</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Review 2 -->
+            <div class="glass-card rounded-3xl p-8 flex flex-col justify-between border border-slate-800 relative">
+                <div class="absolute top-6 right-6 text-brand-500/20 text-4xl">
+                    <i class="fa-solid fa-quote-right"></i>
+                </div>
+                <div>
+                    <div class="flex items-center gap-1 text-amber-400 text-sm mb-4">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-slate-300 text-sm sm:text-base leading-relaxed mb-6">
+                        "Very helpful service for Udyam Aadhaar and FSSAI registration. The owner is extremely polite and efficient. Highly recommended!"
+                    </p>
+                </div>
+                <div class="flex items-center gap-4 pt-4 border-t border-slate-800">
+                    <div class="w-12 h-12 rounded-full bg-gradient-to-tr from-emerald-600 to-teal-400 flex items-center justify-center text-white font-bold text-sm">
+                        PP
+                    </div>
+                    <div>
+                        <h5 class="text-white font-bold text-sm">Pooja Pawar</h5>
+                        <p class="text-slate-400 text-xs">Entrepreneur</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Review 3 -->
+            <div class="glass-card rounded-3xl p-8 flex flex-col justify-between border border-slate-800 relative">
+                <div class="absolute top-6 right-6 text-brand-500/20 text-4xl">
+                    <i class="fa-solid fa-quote-right"></i>
+                </div>
+                <div>
+                    <div class="flex items-center gap-1 text-amber-400 text-sm mb-4">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-slate-300 text-sm sm:text-base leading-relaxed mb-6">
+                        "Got my PF withdrawal and pensioner form submitted accurately. Great to have such professional digital services right here in Koregaon."
+                    </p>
+                </div>
+                <div class="flex items-center gap-4 pt-4 border-t border-slate-800">
+                    <div class="w-12 h-12 rounded-full bg-gradient-to-tr from-purple-600 to-pink-500 flex items-center justify-center text-white font-bold text-sm">
+                        RJ
+                    </div>
+                    <div>
+                        <h5 class="text-white font-bold text-sm">Rahul Jadhav</h5>
+                        <p class="text-slate-400 text-xs">Koregaon Resident</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Inquiry / Booking Form Section -->
+    <section id="inquiry" class="py-20 px-4 sm:px-6 lg:px-8 bg-slate-900/60">
+        <div class="max-w-4xl mx-auto">
+            <div class="glass-card rounded-3xl p-8 sm:p-12 border border-slate-800 shadow-2xl relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-80 h-80 bg-brand-600/10 rounded-full blur-3xl pointer-events-none"></div>
+
+                <div class="text-center max-w-xl mx-auto mb-10">
+                    <h2 class="text-xs sm:text-sm font-bold uppercase tracking-widest text-brand-400 mb-3">Quick Inquiry & Booking</h2>
+                    <h3 class="text-2xl sm:text-4xl font-black text-white tracking-tight mb-3">Book a Service or Ask Us Anything</h3>
+                    <p class="text-slate-400 text-sm">Fill out the quick form below and our team will get in touch with you instantly or have your paperwork ready!</p>
+                </div>
+
+                <form id="service-inquiry-form" onsubmit="handleFormSubmit(event)" class="space-y-6">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-2">Your Full Name *</label>
+                            <input type="text" id="user-name" required placeholder="e.g. Rahul Shinde" class="w-full bg-slate-950/80 border border-slate-800 rounded-xl px-4 py-3.5 text-white placeholder-slate-600 focus:outline-none focus:border-brand-500 transition text-sm">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-2">Mobile Number *</label>
+                            <input type="tel" id="user-phone" required value="8087120198" class="w-full bg-slate-950/80 border border-slate-800 rounded-xl px-4 py-3.5 text-white placeholder-slate-600 focus:outline-none focus:border-brand-500 transition text-sm">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-2">Select Required Service *</label>
+                            <select id="service-select" class="w-full bg-slate-950/80 border border-slate-800 rounded-xl px-4 py-3.5 text-white focus:outline-none focus:border-brand-500 transition text-sm">
+                                <option value="Pensioner Forms">Pensioner Forms</option>
+                                <option value="Agricultural Forms">Agricultural Forms</option>
+                                <option value="PF services">PF Services</option>
+                                <option value="Shop Act License">Shop Act License</option>
+                                <option value="Udyam Aadhaar">Udyam Aadhaar</option>
+                                <option value="FSSAI Registration">FSSAI Registration</option>
+                                <option value="PAN Card">PAN Card</option>
+                                <option value="Voter ID">Voter ID</option>
+                                <option value="Passport">Passport</option>
+                                <option value="Driving License">Driving License</option>
+                                <option value="Other">Other General Inquiry</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-2">Preferred Visit Time</label>
+                            <select id="visit-time" class="w-full bg-slate-950/80 border border-slate-800 rounded-xl px-4 py-3.5 text-white focus:outline-none focus:border-brand-500 transition text-sm">
+                                <option value="Morning (8 AM - 12 PM)">Morning (8:00 AM - 12:00 PM)</option>
+                                <option value="Afternoon (12 PM - 4 PM)">Afternoon (12:00 PM - 4:00 PM)</option>
+                                <option value="Evening (4 PM - 9:30 PM)">Evening (4:00 PM - 9:30 PM)</option>
+                                <option value="Online Consultation Only">Online Consultation Only</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-2">Additional Details / Questions</label>
+                        <textarea id="user-message" rows="4" placeholder="Mention any specific requirements or questions..." class="w-full bg-slate-950/80 border border-slate-800 rounded-xl px-4 py-3.5 text-white placeholder-slate-600 focus:outline-none focus:border-brand-500 transition text-sm"></textarea>
+                    </div>
+
+                    <button type="submit" class="w-full py-4 bg-gradient-to-r from-brand-600 via-indigo-600 to-neon-cyan hover:opacity-95 text-white font-bold rounded-xl shadow-xl neon-glow transition flex items-center justify-center gap-3">
+                        <i class="fa-solid fa-paper-plane"></i> Submit Service Inquiry
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Location Section -->
+    <section id="contact" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="text-center max-w-2xl mx-auto mb-16">
+            <h2 class="text-xs sm:text-sm font-bold uppercase tracking-widest text-brand-400 mb-3">Get in Touch</h2>
+            <h3 class="text-3xl sm:text-5xl font-black text-white tracking-tight mb-4">Visit AJ Digital Seva Kendra</h3>
+            <p class="text-slate-400 text-sm sm:text-base">We are conveniently located right in front of D.P. Bhosale College in Koregaon.</p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Contact Info Card 1 -->
+            <div class="glass-card rounded-3xl p-8 border border-slate-800 text-center flex flex-col items-center">
+                <div class="w-16 h-16 rounded-2xl bg-brand-600/20 text-brand-400 flex items-center justify-center text-2xl mb-6">
+                    <i class="fa-solid fa-location-dot"></i>
+                </div>
+                <h4 class="text-xl font-bold text-white mb-2">Our Location Tag</h4>
+                <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                    Front of D.P. Bhosale College, Koregaon, Satara District, Maharashtra - 415501
+                </p>
+                <a href="https://maps.google.com/?q=D.P.Bhosale+College+Koregaon" target="_blank" class="mt-auto inline-flex items-center gap-2 text-brand-400 font-semibold text-sm hover:underline">
+                    <i class="fa-solid fa-map-location-dot"></i> Open in Google Maps
+                </a>
+            </div>
+
+            <!-- Contact Info Card 2 -->
+            <div class="glass-card rounded-3xl p-8 border border-slate-800 text-center flex flex-col items-center">
+                <div class="w-16 h-16 rounded-2xl bg-neon-cyan/20 text-neon-cyan flex items-center justify-center text-2xl mb-6">
+                    <i class="fa-solid fa-phone-volume"></i>
+                </div>
+                <h4 class="text-xl font-bold text-white mb-2">Call or WhatsApp</h4>
+                <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                    Instant document queries & status checks via phone or WhatsApp support.
+                </p>
+                <div class="mt-auto space-y-2">
+                    <a href="tel:8087120198" class="block text-white font-bold text-base hover:text-brand-400 transition">80871 20198</a>
+                    <a href="https://wa.me/918087120198" target="_blank" class="inline-flex items-center gap-2 text-emerald-400 text-sm font-semibold">
+                        <i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp
+                    </a>
+                </div>
+            </div>
+
+            <!-- Contact Info Card 3 -->
+            <div class="glass-card rounded-3xl p-8 border border-slate-800 text-center flex flex-col items-center">
+                <div class="w-16 h-16 rounded-2xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-2xl mb-6">
+                    <i class="fa-solid fa-clock"></i>
+                </div>
+                <h4 class="text-xl font-bold text-white mb-2">Working Hours</h4>
+                <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                    Monday to Saturday: 8:00 AM – 9:30 PM<br>Sunday: 9:00 AM – 2:00 PM (Urgent Services)
+                </p>
+                <span class="mt-auto inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 text-xs font-bold border border-emerald-500/20">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> Open Today
+                </span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 border-t border-slate-900 py-12 px-4 sm:px-6 lg:px-8 text-slate-400 text-sm">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+            <div class="md:col-span-2 space-y-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-600 to-neon-cyan flex items-center justify-center text-white font-black text-lg">
+                        AJ
+                    </div>
+                    <span class="text-lg font-black tracking-tight text-white">AJ DIGITAL SEVA KENDRA</span>
+                </div>
+                <p class="text-slate-400 text-sm max-w-md leading-relaxed">
+                    Koregaon's most reliable and popular digital service center and internet cafe, located right in front of D.P. Bhosale College. Providing rapid, accurate, and secure government and digital services.
+                </p>
+            </div>
+            <div>
+                <h5 class="text-white font-bold text-sm mb-4">Quick Links</h5>
+                <ul class="space-y-2 text-xs sm:text-sm">
+                    <li><a href="#services" class="hover:text-white transition">All Services</a></li>
+                    <li><a href="#about" class="hover:text-white transition">About Us</a></li>
+                    <li><a href="#pricing" class="hover:text-white transition">Pricing Table</a></li>
+                    <li><a href="#testimonials" class="hover:text-white transition">Testimonials</a></li>
+                    <li><a href="#contact" class="hover:text-white transition">Location Tag</a></li>
+                </ul>
+            </div>
+            <div>
+                <h5 class="text-white font-bold text-sm mb-4">Services</h5>
+                <ul class="space-y-2 text-xs sm:text-sm">
+                    <li><a href="#services" class="hover:text-white transition">Shop Act & Udyam Aadhaar</a></li>
+                    <li><a href="#services" class="hover:text-white transition">Pensioner & PF Services</a></li>
+                    <li><a href="#services" class="hover:text-white transition">Agricultural Forms</a></li>
+                    <li><a href="#services" class="hover:text-white transition">PAN, Voter ID & Passport</a></li>
+                    <li><a href="#services" class="hover:text-white transition">Driving License & FSSAI</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto pt-8 border-t border-slate-900/80 flex flex-col sm:flex-row items-center justify-between text-xs gap-4">
+            <p>&copy; 2026 AJ Digital Seva Kendra, Front of D.P. Bhosale College, Koregaon. All rights reserved.</p>
+            <div class="flex items-center gap-6">
+                <a href="#" class="hover:text-white transition">Privacy Policy</a>
+                <a href="#" class="hover:text-white transition">Terms of Service</a>
+                <a href="#" class="hover:text-white transition">Support</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Interactions -->
+    <script>
+        // Toggle Mobile Menu
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Pre-select service in the form when clicking "Enquire Now"
+        function selectService(serviceName) {
+            const selectElem = document.getElementById('service-select');
+            for (let i = 0; i < selectElem.options.length; i++) {
+                if (selectElem.options[i].value === serviceName) {
+                    selectElem.selectedIndex = i;
+                    break;
+                }
+            }
+        }
+
+        // Handle Form Submission with Custom Modal
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            const name = document.getElementById('user-name').value;
+            const service = document.getElementById('service-select').value;
+            
+            // Show custom notification modal instead of alert()
+            const modal = document.getElementById('notification-modal');
+            const title = document.getElementById('modal-title');
+            const message = document.getElementById('modal-message');
+            
+            title.innerText = "Inquiry Received!";
+            message.innerText = `Thank you, ${name}! We have received your inquiry for ${service}. Our Koregaon team will contact you shortly at 8087120198.`;
+            
+            modal.classList.remove('hidden');
+            
+            // Reset form
+            document.getElementById('service-inquiry-form').reset();
+        }
+
+        // Close Custom Modal
+        function closeModal() {
+            const modal = document.getElementById('notification-modal');
+            modal.classList.add('hidden');
+        }
+    </script>
+</body>
+</html>
